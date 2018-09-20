@@ -1,0 +1,18 @@
+[
+  {
+    "id" : 1,
+  "name" : "puodelis",
+  "price": 2.49,
+  "image": "https://www.bohemia.lt/7596-large_default/puodelis-didelis-oranziniai-taskai-600ml.jpg",
+  "description": "Domas, dirbantis programuotoju, sako, kad jam puodelis pirmiausia turi būti funkcionalus. „Aš nemėgstu, kai yra per daug prisirišama prie daiktų. Daug keliauju ir labiausiai mėgstu logiką, racionalumą, funkcionalumą. Man puodelis turi būti patogus, turėti normalią rankeną. Nes kai kurie būna tokie, kad atrodo, jog paimti už niekur neįmanoma – žiauriai karšta, ir dar iškart iškrenta."
+
+},
+{
+  "id" : 2,
+"name" : "rubiko kubas",
+"price": 1.99,
+"image": "https://cdn.thinkwebcontent.com/news/images/400/foto29029.jpg",
+"description": "Rubiko kubas pasiekė aukščiausią populiarumo tašką ir tapo popkultūros simboliu XX amžiaus 9 dešimtmečio pradžioje. Vien nuo 1980 iki 1982 buvo parduota daugiau kaip 100 000 000 kubų. 1980 ir 1981 metais Rubiko kubas gavo BART Toy of the Year apdovanojimą, kaip geriausias metų žaislas. Netrukus atsirado daug panašių galvosūkių."
+
+}
+]
