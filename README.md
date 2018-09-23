@@ -1,5 +1,11 @@
 # projektas
 
+### Paleisi dist folderyje esantį "build'ą":
+```
+node server.js
+```
+
+
 ## Project setup
 ```
 npm install
