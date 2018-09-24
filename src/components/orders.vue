@@ -1,14 +1,40 @@
 <template lang="html">
   <div class="orders">
-    <table class="table table-bordered">
+    <table class="table table-bordered text-left">
   <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Vardas</th>
-      <th scope="col">El.paštas</th>
-      <th scope="col">Užsakymo data</th>
-      <th scope="col">Suma</th>
-      <th scope="col">Veiksmas</th>
+    <tr class="columns">
+      <th @click="sort('id')" :class="{active:currentSort == 'id'}" scope="col">
+        <p class="float-left">#</p>
+        <i class="fas fa-sort float-right"></i>
+        <i class="fas sort-icon float-right" :class="currentSortDir == 'asc' ? 'fa-sort-up' : 'fa-sort-down' "></i>
+      </th>
+      <th @click="sort('name')" :class="{active:currentSort == 'name'}" scope="col">
+        <p class="float-left">Vardas</p>
+        <i class="fas fa-sort float-right"></i>
+        <i class="fas sort-icon float-right" :class="currentSortDir == 'asc' ? 'fa-sort-up' : 'fa-sort-down' "></i>
+
+      </th>
+      <th @click="sort('email')" :class="{active:currentSort == 'email'}" scope="col">
+        <p class="float-left">El.Paštas</p>
+        <i class="fas fa-sort float-right"></i>
+        <i class="fas sort-icon float-right" :class="currentSortDir == 'asc' ? 'fa-sort-up' : 'fa-sort-down' "></i>
+
+      </th>
+      <th @click="sort('timestamp')" :class="{active:currentSort == 'timestamp'}" scope="col">
+        <p class="float-left">Užsakymo data</p>
+        <i class="fas fa-sort float-right"></i>
+        <i class="fas sort-icon float-right" :class="currentSortDir == 'asc' ? 'fa-sort-up' : 'fa-sort-down' "></i>
+
+      </th>
+      <th @click="sort('total')" :class="{active:currentSort == 'total'}" scope="col">
+        <p class="float-left">Suma</p>
+        <i class="fas fa-sort float-right"></i>
+        <i class="fas sort-icon float-right" :class="currentSortDir == 'asc' ? 'fa-sort-up' : 'fa-sort-down' "></i>
+        
+      </th>
+      <th scope="col">
+        <p class="float-left">Veiksmas</p>
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -23,8 +49,7 @@
   </tbody>
 </table>
 
-<div class="row">
-  <div class="col-sm-6">
+<div class="flex">
     <nav aria-label="...">
       <ul class="pagination">
         <li class="page-item" :class="{disabled : pageNumber-1<1}">
@@ -43,10 +68,8 @@
         </li>
       </ul>
     </nav>
-    <p>Viso puslapių: {{pageCount}}</p>
-  </div>
-  <div class="col-sm-6">
-    <div class="float-right">
+        <label>Viso puslapių: {{pageCount}}</label>
+    <div>
       <form class="form-inline">
         <label class="" for="exampleSelect1">Įrašų puslapyje: </label>
   <select class="form-control mb-2 mr-sm-2 mb-sm-0" @change="pageNumber=1" v-model="items_per_page" id="exampleSelect1">
@@ -58,7 +81,6 @@
       </form>
     </div>
   </div>
-</div>
 
 
 
@@ -71,10 +93,18 @@ export default {
   data(){
     return{
       items_per_page : 5,
-      pageNumber: 1
+      pageNumber: 1,
+      currentSort:'id',
+      currentSortDir:'asc'
 
     }
   },
+
+  created(){
+
+    this.sort(this.currentSort);
+  },
+
   methods:{
     round(input){
       return Math.round(input * 100)/100;
@@ -101,8 +131,21 @@ export default {
 
     details(order){
 
+    },
+
+    sort(column){
+      //puslapio numerį pakeičiam į pirmą
+      this.pageNumber = 1;
+      //if s == current sort, reverse
+    if(column == this.currentSort) {
+      this.currentSortDir = this.currentSortDir=='asc'?'desc':'asc';
     }
+      this.currentSort = column;
+      this.$store.commit('sort', {currentSort : this.currentSort, currentSortDir: this.currentSortDir});
+    }
+
   },
+
   computed:{
 
     phrase(){
@@ -153,6 +196,7 @@ export default {
 
 #exampleSelect1{
   margin-left: .5em;
+  margin-right: 0 !important;
 }
 
 nav{
@@ -170,6 +214,57 @@ nav{
 
 .col-sm-6 p{
   margin-top: .5rem;
+}
+
+.columns th:hover{
+  cursor: pointer;
+  color: black;
+}
+
+th.active{
+  background-color: #f8f9fa;
+  color: black;
+}
+
+th.active:hover{
+
+}
+
+th p{
+  margin-bottom: 0;
+}
+
+th .fas{
+  line-height: 1.25;
+}
+
+.active .fa-sort{
+  display: none;
+}
+
+.flex{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+
+.flex label{
+  padding: 0;
+  padding-top: .5rem;
+  margin: 0;
+}
+
+.form-inline label{
+  padding: 0;
+}
+
+.sort-icon{
+  display: none;
+}
+
+.active .sort-icon{
+  display: inline-block;
 }
 
 
