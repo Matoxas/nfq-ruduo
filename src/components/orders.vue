@@ -30,7 +30,6 @@
         <p class="float-left">Suma</p>
         <i class="fas fa-sort float-right"></i>
         <i class="fas sort-icon float-right" :class="currentSortDir == 'asc' ? 'fa-sort-up' : 'fa-sort-down' "></i>
-        
       </th>
       <th scope="col">
         <p class="float-left">Veiksmas</p>
