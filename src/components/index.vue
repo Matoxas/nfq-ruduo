@@ -43,7 +43,7 @@ export default {
   }
 
   .wrap{
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
   }
 
   .bg-primary{

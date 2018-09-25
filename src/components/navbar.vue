@@ -1,6 +1,4 @@
 <template>
-  <div class="feed">
-
     <div class="navbar">
       <div class="nav-logo">
           <router-link to="/" tag="h1" class="logo">
@@ -32,8 +30,6 @@
         </ul>
       </div>
 
-    </div>
-      <br>
 
 
   </div>
@@ -93,7 +89,7 @@ export default {
 }
 
 .navbar{
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;

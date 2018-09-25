@@ -1,5 +1,6 @@
 <template lang="html">
   <div class="orders">
+    <modal :show="show_modal" :order="current_order" @showModal="showModal(data)"></modal>
     <table class="table table-bordered text-left">
   <thead>
     <tr class="columns">
@@ -88,13 +89,20 @@
 </template>
 
 <script>
+import modal from './modal.vue';
+
 export default {
+
+  components: {modal},
+
   data(){
     return{
       items_per_page : 5,
       pageNumber: 1,
       currentSort:'id',
-      currentSortDir:'asc'
+      currentSortDir:'asc',
+      show_modal : false,
+      current_order : {}
 
     }
   },
@@ -107,6 +115,10 @@ export default {
   methods:{
     round(input){
       return Math.round(input * 100)/100;
+    },
+
+    showModal(data){
+      this.show_modal = data;
     },
 
     search(input, phrase){
@@ -129,7 +141,8 @@ export default {
    },
 
     details(order){
-
+      this.showModal(true);
+      this.current_order = order;
     },
 
     sort(column){
