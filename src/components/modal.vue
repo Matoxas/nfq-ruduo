@@ -68,7 +68,7 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" @click="showModal(false)" class="btn btn-secondary">Uždaryti</button>
+        <button type="button" @click="showModal(false)" class="btn btn-dark">Uždaryti</button>
         <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
       </div>
     </div>
@@ -107,11 +107,15 @@ export default {
   text-align: left;
 }
 
-.modal .table td, .table th {
+.modal .table tbody td, .modal .table tbody th {
    border: none;
 }
 
-tr.last{
+.modal .table thead th{
+  border-top: none;
+}
+
+.modal tr.last{
   border-top: 1px solid #e9ecef;
 }
 
@@ -129,7 +133,7 @@ tr.last{
     overflow-y: initial !important
 }
 .modal-body{
-    height: 450px;
+    height: 400px;
     overflow-y: auto;
 }
 

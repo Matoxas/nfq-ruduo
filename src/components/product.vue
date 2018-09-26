@@ -24,5 +24,8 @@ export default {
 
 <style lang="css">
 
+.card-img-top{
+  padding-top: 1em;
+}
 
 </style>

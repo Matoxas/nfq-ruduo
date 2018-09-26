@@ -2,7 +2,7 @@
     <div class="navbar">
       <div class="nav-logo">
           <router-link to="/" tag="h1" class="logo">
-            <span id="text" class="d-none d-lg-inline">parduotuvėlė</span>
+            <span id="text" class=" d-lg-inline">parduotuvėlė</span>
           </router-link>
         <!-- <a class="navbar-brand" href="#">
           <span id="logo">logo</span>
@@ -25,8 +25,13 @@
               </i>
             </router-link>
           </li>
-          <router-link class="link" tag="li"  to="/">pagrindinis</router-link>
-          <router-link class="link" tag="li"  to="/orders">užsakymai</router-link>
+          <li @click="dropdown =!dropdown" class=" dropdown-icon d-xs-inline d-md-none">
+              <i class="fas fa-bars"></i>
+          </li>
+          <div class="menu" @click="dropdown = false" :class="{active:dropdown}">
+            <router-link class="link" tag="li"  to="/">pagrindinis</router-link>
+            <router-link class="link" tag="li"  to="/orders">užsakymai</router-link>
+          </div>
         </ul>
       </div>
 
@@ -41,7 +46,8 @@ export default {
     return {
       toggler : false,
       retrievedObject : '',
-      input : ''
+      input : '',
+      dropdown: false
     }
   },
   methods:{
@@ -89,6 +95,7 @@ export default {
 }
 
 .navbar{
+  position: relative;
   margin-bottom: 2rem;
   display: flex;
   flex-wrap: nowrap;
@@ -194,6 +201,49 @@ ul > *{
 
       color: #fff;
       background: red;
+}
+
+.dropdown-icon{
+  cursor: pointer;
+}
+
+@media (max-width:768px) {
+
+  .menu{
+    display: none !important;
+    background-color: #f8f9fa;
+    position: absolute;
+    z-index: 9999;
+    display: block;
+    width: 100%;
+    top: 60px;
+    margin-left: 8px;
+    /* left: .1em; */
+
+  }
+
+  .menu.active{
+    display: block !important;
+  }
+
+  body {
+      margin: 0;
+  }
+
+  .menu li{
+    padding: 2em;
+    display: block !important;
+  }
+
+  .menu li:last-child{
+    border-top: 1px solid rgba(0,0,0,.125)
+  }
+
+  .menu li:hover{
+    background-color: #343a40;
+    color: white;
+  }
+
 }
 
 

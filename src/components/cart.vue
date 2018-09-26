@@ -6,34 +6,36 @@
       <i>jūsų krepšelis tuščias! </i>
       <router-link to="/">Į parduotuvę</router-link>
     </p>
-    <table class="table is-striped" v-show="products.length">
-      <thead>
-        <tr>
-          <td>Pavadinimas</td>
-          <td>Kaina</td>
-          <td>Kiekis</td>
-          <td>Veiksmas</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="p in products">
-            <td>{{ p.name }}</td>
-            <td>€{{ p.price }}</td>
-            <td><input type="number" @change="quantitychange(p)" v-model="p.quantity"></td>
-            <td><button class="btn btn-light" @click="remove(p)">pašalinti</button></td>
-            <!-- <td><p @click="remove(p)" class="bold">pašalinti</p></td> -->
-          </tr>
+    <div class="table-responsive">
+      <table class="table is-striped" v-show="products.length">
+        <thead>
           <tr>
-            <td><b>Viso:</b></td>
-            <td><b>€{{ total }}</b></td>
-            <td></td>
-            <td>
-              <router-link tag="button" class="btn btn-dark" to="/order"  type="button" name="button">užsakyti</router-link>
-            </td>
-            <br>
+            <td>Pavadinimas</td>
+            <td>Kaina</td>
+            <td>Kiekis</td>
+            <td>Veiksmas</td>
           </tr>
-      </tbody>
-</table>
+        </thead>
+        <tbody>
+          <tr v-for="p in products">
+              <td>{{ p.name }}</td>
+              <td>€{{ p.price }}</td>
+              <td><input type="number" @change="quantitychange(p)" v-model="p.quantity"></td>
+              <td><button class="btn btn-light" @click="remove(p)">pašalinti</button></td>
+              <!-- <td><p @click="remove(p)" class="bold">pašalinti</p></td> -->
+            </tr>
+            <tr>
+              <td><b>Viso:</b></td>
+              <td><b>€{{ total }}</b></td>
+              <td></td>
+              <td>
+                <router-link tag="button" class="btn btn-dark" to="/order"  type="button" name="button">užsakyti</router-link>
+              </td>
+              <br>
+            </tr>
+        </tbody>
+      </table>
+    </div>
     <!-- <p><button v-show="products.length" class='button is-primary' @click='checkout'>Užsakyti</button></p> -->
   </div>
 </template>
